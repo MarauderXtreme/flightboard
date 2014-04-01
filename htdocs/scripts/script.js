@@ -24,20 +24,20 @@ var nid = [
 	'Stelle 19'
 ];
 
-var offset = 6;
+var offset = 7;
 var array_length = 0;
 var flipperinterval;
 
 function animate_line(animated_div) {
 	animated_div.splitFlap({
 		'image' : '../css/images/chars.png',
-		'speed' : 10,
-		'speedVariation' : 0
+		'speed' : 15,
+		'speedVariation' : 2
 	});
 }
 
 function set_offset() {
-	if (offset = get_array_size() + 1) {
+	if (offset = get_array_size(nid) + 1) {
 		offset = 0;
 	}
 	else {
@@ -56,21 +56,20 @@ function get_array_entry(linenumber,offset) {
 }
 
 function flipper(before) {
-	console.log(linenumber);
 	linenumber = before + 1;
 	if(linenumber == 1) {
-		that = $('div#content div:nth-child(' + linenumber + ')');
+		that = $('div#content div:nth-of-type(' + linenumber + ')');
 		that.remove();
-		that = $('div#content div:nth-child(' + linenumber + ')');
-		that.before('<div id="line-1">' + get_array_entry(linenumber,offset) + '</div>');
-		that = $('div#content div:nth-child(' + linenumber + ')');
-		// that.animate_line(this);
+		that = $('div#content div:nth-of-type(' + linenumber + ')');
+		that.before('<div id="line-1" class="flipline">' + get_array_entry(linenumber,offset) + '</div>');
+		that = $('div#content div:nth-of-type(' + linenumber + ')');
+		animate_line(that);
 	}
 	else {
-		that = $('div#content div:nth-child(' + linenumber + ')');
+		that = $('div#content div:nth-of-type(' + linenumber + ')');
 		that.remove();
-		$('div#content div:nth-child(' + before + ')').after('<div id="line-' + linenumber + '">' + get_array_entry(linenumber,offset) + '</div>');
-		// that.animate_line(this);
+		$('div#content div:nth-of-type(' + before + ')').after('<div id="line-' + linenumber + '" class="flipline">' + get_array_entry(linenumber,offset) + '</div>');
+		animate_line(that);
 	}
 }
 
@@ -83,18 +82,23 @@ function everybodyDotheFlop() {
 			if(counter === 7) {
    			clearInterval(flipperintervall);
   		}
-  		console.log(counter);
-		}, 3000);
+		}, 6000);
+}
+
+function bypassintervall() {
+	everybodyDotheFlop();
 }
 
 function init() {
 	window.setInterval(function() {
 		everybodyDotheFlop();
+		set_offset();
 	}, 25000);
 }
 
 $(document).ready(function() {
-	init();
+	bypassintervall();
+	// init();
 })
 
 
