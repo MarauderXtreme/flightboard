@@ -58,17 +58,21 @@ function get_array_entry(linenumber,offset) {
 function flipper(before) {
 	linenumber = before + 1;
 	if(linenumber == 1) {
-		that = $('div#content div:nth-of-type(' + linenumber + ')');
+		that = $('div#content>div:nth-of-type(' + linenumber + ')');
 		that.remove();
-		that = $('div#content div:nth-of-type(' + linenumber + ')');
+		that = null;
+		that = $('div#content>div:nth-of-type(' + linenumber + ')');
 		that.before('<div id="line-1" class="flipline">' + get_array_entry(linenumber,offset) + '</div>');
-		that = $('div#content div:nth-of-type(' + linenumber + ')');
+		that =  null;
+		that = $('div#content>div:nth-of-type(' + linenumber + ')');
 		animate_line(that);
 	}
 	else {
-		that = $('div#content div:nth-of-type(' + linenumber + ')');
+		that = $('div#content>div:nth-of-type(' + linenumber + ')');
 		that.remove();
-		$('div#content div:nth-of-type(' + before + ')').after('<div id="line-' + linenumber + '" class="flipline">' + get_array_entry(linenumber,offset) + '</div>');
+		that = null;
+		$('div#content>div:nth-of-type(' + before + ')').after('<div id="line-' + linenumber + '" class="flipline">' + get_array_entry(linenumber,offset) + '</div>');
+		that = $('div#content>div:nth-of-type(' + linenumber + ')');
 		animate_line(that);
 	}
 }
@@ -82,7 +86,7 @@ function everybodyDotheFlop() {
 			if(counter === 7) {
    			clearInterval(flipperintervall);
   		}
-		}, 6000);
+		},500);
 }
 
 function bypassintervall() {
@@ -93,45 +97,33 @@ function init() {
 	window.setInterval(function() {
 		everybodyDotheFlop();
 		set_offset();
-	}, 25000);
+	}, 15000);
 }
 
 $(document).ready(function() {
 	bypassintervall();
-	// init();
+	init();
 })
 
-
-// $(document).ready(function() {
-	// window.setInterval(
-		// function() {
-			// var divs = [];
-			// divs.push($('div#content > div'));
-			// if(divs.length > 7) {
-				// $('div#content div:last-child').remove();
-			// }
-			// $('div#content div:first-of-type').before('<div class="test">Test</div>');
-		// }
-		// , 1000);
-// });
-
-// $(document).ready(function() {
-	// var count = 0;
-	// $('.split-flap-' + count).splitFlap({
-		// 'image' : '../css/images/chars.png',
-		// 'speed' : 14,
-		// 'speedVariation' : 0
-	// });
-	// count = count + 1;
-	// window.setInterval(
-		// function() {
-			// $('.split-flap-' + count).splitFlap({
-				// 'image' : '../css/images/chars.png',
-				// 'speed' : 10,
-				// 'speedVariation' : 0
-			// });
-			// count = count + 1;
-		// }
-		// ,2000);
-// });
-
+/**
+ * Another Approach if necessary
+ */ 
+// function another_approach(before)  {
+	// linenumber = before + 1;
+	// remove_and_animate_values(linenumber);
+// }
+//
+// function insert_values() {
+	// for (i=1; i==7; i++) {
+		// inverted_i = 7 - i;
+		// that = $('div#content div:nth-of-type(' + i + ')');
+		// that.after('<div class="flipline flipline-' + i + '">' + get_array_entry(inverted_i,offset) + '</div>');
+	// }
+// }
+// 
+// function remove_and_animate_values(linenumber) {
+		// that = $('div#content div:nth-of-type(' + linenumber + ')');
+		// that.remove();
+		// that = $('div#content div:nth-of-type(' + linenumber + ')');
+		// animate_line(that);
+// }
