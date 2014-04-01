@@ -1,0 +1,37 @@
+body {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	background: #666666;
+}
+#content {
+	margin: 10px 20px;
+	border: 7px solid #000000;
+	background: #666666; /*#1F62A6;*/
+	padding: 17px;
+	height: 850px;
+	box-shadow: 5px 10px 20px #CCCCCC inset;
+}
+h1 {
+	margin: 0 0 10px 0;
+	padding: 0;
+	font-size: 3em;
+	text-align: center;
+}
+h1 a {
+	color: #000000;
+}
+.char {
+	margin: 3px;
+}
+
+
+#basicBoard span {
+	display: block;
+	float: left;
+	width: 25px;
+	height: 34px;
+	background: url(images/flightBoardLarge.png) center no-repeat;
+}
+#airport {
+	text-transform: capitalize;
+}
