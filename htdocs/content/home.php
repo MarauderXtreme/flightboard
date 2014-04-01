@@ -17,7 +17,7 @@
 	}
 	// echo '<div class="test"></div>';
 ?>
-<div id="line-1"></div>
+<div id="line-1">test</div>
 <div id="line-2"></div>
 <div id="line-3"></div>
 <div id="line-4"></div>
