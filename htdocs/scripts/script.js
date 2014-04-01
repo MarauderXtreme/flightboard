@@ -71,23 +71,28 @@ function flipper(linenumber) {
 	}
 }
 
+function tempflipper(counter) {
+	//flipper(counter);
+	counter++;
+	if(counter === 7) {
+   	clearInterval(flipperintervall);
+  }
+  return counter;
+}
 
 function everybodyDotheFlop() {
-	// var counter = 0;
-	// var flipperintervall =
-	// setInterval(function() {
-		// flipper(counter);
-		// counter++;
-		// if(counter === 7) {
-    	// clearInterval(flipperintervall);
-    // }
-	// }, 3000);
+	var counter = 0;
+	var flipperintervall =
+		setInterval(function() {
+			counter = tempflipper(counter);
+			alert(counter);
+		}, 5000);
 }
 
 function init() {
 	window.setInterval(function() {
 		everybodyDotheFlop();
-	}, 6000);
+	}, 60000);
 }
 
 $(document).ready(function() {
