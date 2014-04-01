@@ -26,6 +26,7 @@ var nid = [
 
 var offset = 6;
 var array_length = 0;
+var flipperinterval;
 
 function animate_line(animated_div) {
 	animated_div.splitFlap({
@@ -48,51 +49,48 @@ function get_array_size(array) {
 	array_length = array.length();
 	return array_length;
 }
-function get_array_entry(lineumber,offset) {
+function get_array_entry(linenumber,offset) {
 	entrynumber = offset - linenumber;
 	entry = nid[entrynumber];
 	return entry;
 }
 
-function flipper(linenumber) {
-	if(linenumber == 0) {
-		that = $('div#content div:first-child');
-		that.remove();
-		that.before('<div>' + get_array_entry(linenumber,offset) + '</div>');
-		that.animate_line(this);
-	}
-	else {
-		linenumber = linenumber + 1;
-		var before = linenumber - 1;
+function flipper(before) {
+	console.log(linenumber);
+	linenumber = before + 1;
+	if(linenumber == 1) {
 		that = $('div#content div:nth-child(' + linenumber + ')');
 		that.remove();
-		$('div#content div:nth-child(' + before + ')').after('<div>' + get_array_entry(linenumber,offset) + '</div>');
-		that.animate_line(this);
+		that = $('div#content div:nth-child(' + linenumber + ')');
+		that.before('<div id="line-1">' + get_array_entry(linenumber,offset) + '</div>');
+		that = $('div#content div:nth-child(' + linenumber + ')');
+		// that.animate_line(this);
 	}
-}
-
-function tempflipper(counter) {
-	//flipper(counter);
-	counter++;
-	if(counter === 7) {
-   	clearInterval(flipperintervall);
-  }
-  return counter;
+	else {
+		that = $('div#content div:nth-child(' + linenumber + ')');
+		that.remove();
+		$('div#content div:nth-child(' + before + ')').after('<div id="line-' + linenumber + '">' + get_array_entry(linenumber,offset) + '</div>');
+		// that.animate_line(this);
+	}
 }
 
 function everybodyDotheFlop() {
 	var counter = 0;
-	var flipperintervall =
+	flipperintervall =
 		setInterval(function() {
-			counter = tempflipper(counter);
-			alert(counter);
-		}, 5000);
+			flipper(counter);
+			counter++;
+			if(counter === 7) {
+   			clearInterval(flipperintervall);
+  		}
+  		console.log(counter);
+		}, 3000);
 }
 
 function init() {
 	window.setInterval(function() {
 		everybodyDotheFlop();
-	}, 60000);
+	}, 25000);
 }
 
 $(document).ready(function() {
