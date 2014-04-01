@@ -17,10 +17,10 @@
 	}
 	// echo '<div class="test"></div>';
 ?>
-<div id="line-1">test</div>
-<div id="line-2"></div>
-<div id="line-3"></div>
-<div id="line-4"></div>
-<div id="line-5"></div>
-<div id="line-6"></div>
-<div id="line-7"></div>
+<div id="line-1" class="flipline">test1</div>
+<div id="line-2" class="flipline">test2</div>
+<div id="line-3" class="flipline">test3</div>
+<div id="line-4" class="flipline">test4</div>
+<div id="line-5" class="flipline">test5</div>
+<div id="line-6" class="flipline">test6</div>
+<div id="line-7" class="flipline">test7</div>
