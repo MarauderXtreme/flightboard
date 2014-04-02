@@ -29,7 +29,7 @@ var offset = 7;
 
 function animate_line(animated_div) {
 	animated_div.splitFlap({
-		'image' : '../css/images/chars.png',
+		'image' : 'css/images/chars.png',
 		'speed' : 15,
 		'speedVariation' : 2
 	});
@@ -50,7 +50,6 @@ function get_array_size(array) {
 }
 function get_array_entry(linenumber) {
 	entrynumber = offset - linenumber;
-	console.log('entrynumber = ' + entrynumber);
 	if(entrynumber < 0) {
 		entrynumber = get_array_size(nid) + entrynumber;
 	}
@@ -101,7 +100,6 @@ function bypassintervall() {
 
 function init() {
 	window.setInterval(function() {
-		console.log('offset = ' + offset);
 		everybodyDotheFlop();
 	}, 15000);
 }
