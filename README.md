@@ -2,7 +2,15 @@ flightboard
 ===========
 
 A little script that creates a flipboard like site from a given 2-dim-array.
-Array structure: [['Title','Logocode','Locationcode'],['Title','Logocode','Locationcode'],['Title','Logocode','Locationcode']]
+
+Setup
+-----
+
+HTML
+- big div with the id content
+
+JS
+- nid[['Title','Logocode','Locationcode'],['Title','Logocode','Locationcode'],['Title','Logocode','Locationcode']]
 
 Library
 --------
