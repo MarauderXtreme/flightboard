@@ -16,38 +16,58 @@
  */
 
 var nid = [
-	['testtesttesttesttesttesttesttesttesttesttest','a','c'],
-	['testtesttesttesttesttestte','a','c'],
-	['Stelle  1','a','c'],
-	['Stelle  2','a','c'],
-	['Stelle  3','a','c'],
-	['Stelle  4','a','c'],
-	['Stelle  5','a','c'],
-	['Stelle  6','a','c'],
-	['Stelle  7','a','c'],
-	['Stelle  8','a','c'],
-	['Stelle  9','a','c'],
-	['Stelle 10','a','c'],
-	['Stelle 11','a','c'],
-	['Stelle 12','a','c'],
-	['Stelle 13','a','c'],
-	['Stelle 14','a','c'],
-	['Stelle 15','a','c'],
-	['Stelle 16','a','c'],
-	['Stelle 17','a','c'],
-	['Stelle 18','a','c'],
-	['Stelle 19','a','c']
+	['testtesttesttesttesttesttesttesttesttesttest','b','g'],
+	['testtesttesttesttesttestte','a','h'],
+	['Stelle  1','f','d'],
+	['Stelle  2','c','c'],
+	['Stelle  3','a','h'],
+	['Stelle  4','g','d'],
+	['Stelle  5','d','f'],
+	['Stelle  6','e','a'],
+	['Stelle  7','h','b'],
+	['Stelle  8','d','c'],
+	['Stelle  9','b','g'],
+	['Stelle 10','h','g'],
+	['Stelle 11','a','a'],
+	['Stelle 12','b','b'],
+	['Stelle 13','a','h'],
+	['Stelle 14','f','d'],
+	['Stelle 15','d','e'],
+	['Stelle 16','g','e'],
+	['Stelle 17','g','f'],
+	['Stelle 18','h','a'],
+	['Stelle 19','b','c']
 ];
 
 var flipperinterval;
 var offset = 7;
 
-function animate_line(animated_div) {
-	animated_div.splitFlap({
+function animate_line(animate_selector) {
+	title = $(animate_selector + ' .title');
+	title.splitFlap({
 		'image' : 'css/images/chars.png',
 		'speed' : 15,
 		'speedVariation' : 2
 	});
+	title = null;
+	logo = $(animate_selector + ' .logo');
+	logo.splitFlap({
+		'image' : 'css/images/chars.png',
+		'charWidth' : 200,
+		'charsMap' : 'ABCDEFGH',
+		'speed' : 3,
+		'speedVariation' : 2
+	});
+	logo = null;
+	locationcode = $(animate_selector + ' .location');
+	locationcode.splitFlap({
+		'image' : 'css/images/chars.png',
+		'charWidth' : 200,
+		'charsMap' : 'ABCDEFGH',
+		'speed' : 3,
+		'speedVariation' : 2
+	});
+	locationcode = null;
 }
 
 function set_offset() {
@@ -113,6 +133,7 @@ function construct_line(linenumber) {
 }
 
 function first_line(linenumber) {
+	animate_selector = 0;
 	that = $('div#content>div:nth-of-type(' + linenumber + ')');
 	that.remove();
 	that = null;
@@ -120,18 +141,21 @@ function first_line(linenumber) {
 	that.before(construct_line(linenumber));
 	that =  null;
 	that = $('div#content>div:nth-of-type(' + linenumber + ')');
-	// animate_line(that);
+	animate_selector = that.selector;
 	that = null;
+	animate_line(animate_selector);
 }
 
 function else_lines(linenumber,before) {
+	animate_selector = 0;
 	that = $('div#content>div:nth-of-type(' + linenumber + ')');
 	that.remove();
 	that = null;
 	$('div#content>div:nth-of-type(' + before + ')').after(construct_line(linenumber));
 	that = $('div#content>div:nth-of-type(' + linenumber + ')');
-	// animate_line(that);
+	animate_selector = that.selector;
 	that = null;
+	animate_line(animate_selector);
 }
 
 function flipper(before) {
