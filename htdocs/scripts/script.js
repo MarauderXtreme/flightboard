@@ -36,8 +36,8 @@ function animate_line(animated_div) {
 }
 
 function set_offset() {
-	if (offset == get_array_size(nid) + 1) {
-		offset = 0;
+	if (offset == get_array_size(nid)) {
+		offset = 1;
 	}
 	else {
 		offset++;
@@ -50,6 +50,7 @@ function get_array_size(array) {
 }
 function get_array_entry(linenumber) {
 	entrynumber = offset - linenumber;
+	console.log('entrynumber = ' + entrynumber);
 	entry = nid[entrynumber];
 	return entry;
 }
@@ -65,6 +66,7 @@ function flipper(before) {
 		that =  null;
 		that = $('div#content>div:nth-of-type(' + linenumber + ')');
 		animate_line(that);
+		that = null;
 	}
 	else {
 		that = $('div#content>div:nth-of-type(' + linenumber + ')');
@@ -73,6 +75,7 @@ function flipper(before) {
 		$('div#content>div:nth-of-type(' + before + ')').after('<div id="line-' + linenumber + '" class="flipline">' + get_array_entry(linenumber) + '</div>');
 		that = $('div#content>div:nth-of-type(' + linenumber + ')');
 		animate_line(that);
+		that = null;
 	}
 }
 
@@ -83,6 +86,7 @@ function everybodyDotheFlop() {
 			flipper(counter);
 			counter++;
 			if(counter === 7) {
+				console.clear();
 				set_offset();
    			clearInterval(flipperintervall);
   		}
@@ -95,6 +99,7 @@ function bypassintervall() {
 
 function init() {
 	window.setInterval(function() {
+		console.log('offset = ' + offset);
 		everybodyDotheFlop();
 	}, 15000);
 }
