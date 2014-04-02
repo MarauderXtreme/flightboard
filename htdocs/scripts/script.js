@@ -16,27 +16,27 @@
  */
 
 var nid = [
-	'testtesttesttesttesttesttesttesttesttesttest',
-	'testtesttesttesttesttestte',
-	'Stelle  1',
-	'Stelle  2',
-	'Stelle  3',
-	'Stelle  4',
-	'Stelle  5',
-	'Stelle  6',
-	'Stelle  7',
-	'Stelle  8',
-	'Stelle  9',
-	'Stelle 10',
-	'Stelle 11',
-	'Stelle 12',
-	'Stelle 13',
-	'Stelle 14',
-	'Stelle 15',
-	'Stelle 16',
-	'Stelle 17',
-	'Stelle 18',
-	'Stelle 19'
+	['testtesttesttesttesttesttesttesttesttesttest','a','c'],
+	['testtesttesttesttesttestte','a','c'],
+	['Stelle  1','a','c'],
+	['Stelle  2','a','c'],
+	['Stelle  3','a','c'],
+	['Stelle  4','a','c'],
+	['Stelle  5','a','c'],
+	['Stelle  6','a','c'],
+	['Stelle  7','a','c'],
+	['Stelle  8','a','c'],
+	['Stelle  9','a','c'],
+	['Stelle 10','a','c'],
+	['Stelle 11','a','c'],
+	['Stelle 12','a','c'],
+	['Stelle 13','a','c'],
+	['Stelle 14','a','c'],
+	['Stelle 15','a','c'],
+	['Stelle 16','a','c'],
+	['Stelle 17','a','c'],
+	['Stelle 18','a','c'],
+	['Stelle 19','a','c']
 ];
 
 var flipperinterval;
@@ -74,7 +74,7 @@ function normalize_entries(entry) {
 		return entry;
 	}
 	else if(entry_length > 26) {
-    entry = entry.substring(0,23)+"...";
+    entry = entry.substring(0,25)+"@";
 		return entry;
 	}
 	else {
@@ -82,14 +82,34 @@ function normalize_entries(entry) {
 	}
 }
 
-function get_array_entry(linenumber) {
+function get_array_entry(linenumber,type) {
 	entrynumber = offset - linenumber;
 	if(entrynumber < 0) {
 		entrynumber = get_array_size(nid) + entrynumber;
 	}
-	entry = nid[entrynumber];
-	entry = normalize_entries(entry);
+	switch(type) {
+		case 'title':
+			entry = nid[entrynumber][0];
+			entry = normalize_entries(entry);
+			break;
+		case 'logo':
+			entry = nid[entrynumber][1];
+			break;
+		case 'location':
+			entry = nid[entrynumber][2];
+			break;
+		default:
+			alert('This should not happen!!1!!11!einself');
+	}
 	return entry;
+}
+
+function construct_line(linenumber) {
+	title = '<span class="title">' + get_array_entry(linenumber,'title') + '</span>';
+	logo = '<span class="logo">' + get_array_entry(linenumber,'logo') + '</span>';
+	locationcode = '<span class="location">' + get_array_entry(linenumber,'location') + '</span>';
+	line = '<div id="line-' + linenumber + '" class="flipline">' + title + logo + locationcode + '</div>'
+	return line;
 }
 
 function first_line(linenumber) {
@@ -97,10 +117,10 @@ function first_line(linenumber) {
 	that.remove();
 	that = null;
 	that = $('div#content>div:nth-of-type(' + linenumber + ')');
-	that.before('<div id="line-1" class="flipline">' + get_array_entry(linenumber) + '</div>');
+	that.before(construct_line(linenumber));
 	that =  null;
 	that = $('div#content>div:nth-of-type(' + linenumber + ')');
-	animate_line(that);
+	// animate_line(that);
 	that = null;
 }
 
@@ -108,9 +128,9 @@ function else_lines(linenumber,before) {
 	that = $('div#content>div:nth-of-type(' + linenumber + ')');
 	that.remove();
 	that = null;
-	$('div#content>div:nth-of-type(' + before + ')').after('<div id="line-' + linenumber + '" class="flipline">' + get_array_entry(linenumber) + '</div>');
+	$('div#content>div:nth-of-type(' + before + ')').after(construct_line(linenumber));
 	that = $('div#content>div:nth-of-type(' + linenumber + ')');
-	animate_line(that);
+	// animate_line(that);
 	that = null;
 }
 
