@@ -24,9 +24,8 @@ var nid = [
 	'Stelle 19'
 ];
 
-var offset = 7;
-var array_length = 0;
 var flipperinterval;
+var offset = 7;
 
 function animate_line(animated_div) {
 	animated_div.splitFlap({
@@ -37,19 +36,19 @@ function animate_line(animated_div) {
 }
 
 function set_offset() {
-	if (offset = get_array_size(nid) + 1) {
+	if (offset == get_array_size(nid) + 1) {
 		offset = 0;
 	}
 	else {
-		offset = offset++;
+		offset++;
 	};
 }
 
 function get_array_size(array) {
-	array_length = array.length();
+	array_length = array.length;
 	return array_length;
 }
-function get_array_entry(linenumber,offset) {
+function get_array_entry(linenumber) {
 	entrynumber = offset - linenumber;
 	entry = nid[entrynumber];
 	return entry;
@@ -62,7 +61,7 @@ function flipper(before) {
 		that.remove();
 		that = null;
 		that = $('div#content>div:nth-of-type(' + linenumber + ')');
-		that.before('<div id="line-1" class="flipline">' + get_array_entry(linenumber,offset) + '</div>');
+		that.before('<div id="line-1" class="flipline">' + get_array_entry(linenumber) + '</div>');
 		that =  null;
 		that = $('div#content>div:nth-of-type(' + linenumber + ')');
 		animate_line(that);
@@ -71,7 +70,7 @@ function flipper(before) {
 		that = $('div#content>div:nth-of-type(' + linenumber + ')');
 		that.remove();
 		that = null;
-		$('div#content>div:nth-of-type(' + before + ')').after('<div id="line-' + linenumber + '" class="flipline">' + get_array_entry(linenumber,offset) + '</div>');
+		$('div#content>div:nth-of-type(' + before + ')').after('<div id="line-' + linenumber + '" class="flipline">' + get_array_entry(linenumber) + '</div>');
 		that = $('div#content>div:nth-of-type(' + linenumber + ')');
 		animate_line(that);
 	}
@@ -84,6 +83,7 @@ function everybodyDotheFlop() {
 			flipper(counter);
 			counter++;
 			if(counter === 7) {
+				set_offset();
    			clearInterval(flipperintervall);
   		}
 		},500);
@@ -96,7 +96,6 @@ function bypassintervall() {
 function init() {
 	window.setInterval(function() {
 		everybodyDotheFlop();
-		set_offset();
 	}, 15000);
 }
 
