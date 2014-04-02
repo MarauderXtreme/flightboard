@@ -51,6 +51,9 @@ function get_array_size(array) {
 function get_array_entry(linenumber) {
 	entrynumber = offset - linenumber;
 	console.log('entrynumber = ' + entrynumber);
+	if(entrynumber < 0) {
+		entrynumber = get_array_size(nid) + entrynumber;
+	}
 	entry = nid[entrynumber];
 	return entry;
 }
@@ -86,7 +89,6 @@ function everybodyDotheFlop() {
 			flipper(counter);
 			counter++;
 			if(counter === 7) {
-				console.clear();
 				set_offset();
    			clearInterval(flipperintervall);
   		}
