@@ -13,6 +13,7 @@
  * 	'speed' : 3,
  * 	'speedVariation' : 2
  * });
+ * 
  */
 
 var nid = [
@@ -45,17 +46,17 @@ var offset = 7;
 function animate_line(animate_selector) {
 	title = $(animate_selector + ' .title');
 	title.splitFlap({
-		'image' : 'css/images/chars.png',
-		'speed' : 15,
-		'speedVariation' : 2
+	'image' : 'css/images/chars.png',
+		'speed' : 10,
+		'speedVariation' : 0
 	});
 	title = null;
 	logo = $(animate_selector + ' .logo');
 	logo.splitFlap({
-		'image' : 'css/images/chars.png',
+		'image' : 'css/images/logos.png',
 		'charWidth' : 200,
-		'charsMap' : 'ABCDEFGH',
-		'speed' : 3,
+		'charsMap' : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
+		'speed' : 8,
 		'speedVariation' : 2
 	});
 	logo = null;
@@ -178,7 +179,7 @@ function everybodyDotheFlop() {
 				set_offset();
    			clearInterval(flipperintervall);
   		}
-		},1500);
+		},2000);
 }
 
 function bypassintervall() {
@@ -188,7 +189,7 @@ function bypassintervall() {
 function init() {
 	window.setInterval(function() {
 		everybodyDotheFlop();
-	}, 15000);
+	}, 45000);
 }
 
 function create_flipper_material() {
@@ -197,6 +198,9 @@ function create_flipper_material() {
 	content = null;
 }
 
+/*
+ * Main Function
+ */
 $(document).ready(function() {
 	create_flipper_material();
 	bypassintervall();
