@@ -1,17 +1,25 @@
+html {
+}
 body {
 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
 	font-size: 14px;
 	background: #666666;
+	transform: scale(0.75);
+	
 }
 header {
 	height: 100px;
 }
 #content {
-	margin: 10px 20px;
+	position: absolute;
+	top: 50%;
+	left: 0%;
+	margin: 0 0 0 -310px;
 	border: 7px solid #000000;
 	background: #666666; /*#1F62A6;*/
 	padding: 17px;
-	height: 850px;
+	width: 2480px;
+	height: 1375px;
 	box-shadow: 5px 10px 20px #CCCCCC inset;
 }
 h1 {
@@ -28,5 +36,5 @@ h1 a {
 }
 span {
 	float: left;
-	margin-right: 30px;
+	margin-right: 25px;
 }
