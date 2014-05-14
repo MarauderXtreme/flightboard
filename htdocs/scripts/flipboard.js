@@ -74,11 +74,11 @@ var nid = [
 ]
 
 var flipperinterval;
-var linenumbers = 12;
+var linenumbers = 11;
 var offset = linenumbers;
-var charnumber = 37;
-var lineflipintervall = 12;
-var completeflipintervall = 300;
+var charnumber = 38;
+var lineflipintervall = 10;
+var completeflipintervall = 180;
 
 function makemilliseconds(seconds) {
 	return seconds * 1000;
@@ -88,6 +88,8 @@ function animate_line(animate_selector) {
 	title = $(animate_selector + ' .title');
 	title.splitFlap({
 		'image' : 'css/images/chars.png',
+		'charWidth' : 40,
+		'charHeight' : 80,
 		'charsMap' : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789.,|@():+-',
 		'speed' : 5,
 		'speedVariation' : 1
@@ -96,7 +98,8 @@ function animate_line(animate_selector) {
 	logo = $(animate_selector + ' .logo');
 	logo.splitFlap({
 		'image' : 'css/images/logos.png',
-		'charWidth' : 200,
+		'charWidth' : 160,
+		'charHeight' : 80,
 		'charsMap' : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ012345678',
 		'speed' : 3,
 		'speedVariation' : 1
@@ -105,6 +108,8 @@ function animate_line(animate_selector) {
 	locationcode = $(animate_selector + ' .location');
 	locationcode.splitFlap({
 		'image' : 'css/images/chars.png',
+		'charWidth' : 40,
+		'charHeight' : 80,
 		'charsMap' : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ ',
 		'speed' : 3,
 		'speedVariation' : 1
