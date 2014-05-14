@@ -77,8 +77,8 @@ var flipperinterval;
 var linenumbers = 12;
 var offset = linenumbers;
 var charnumber = 37;
-var lineflipintervall = 9;
-var completeflipintervall = 150;
+var lineflipintervall = 12;
+var completeflipintervall = 300;
 
 function makemilliseconds(seconds) {
 	return seconds * 1000;
@@ -90,7 +90,7 @@ function animate_line(animate_selector) {
 		'image' : 'css/images/chars.png',
 		'charsMap' : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789.,|@():+-',
 		'speed' : 5,
-		'speedVariation' : 2
+		'speedVariation' : 1
 	});
 	title = null;
 	logo = $(animate_selector + ' .logo');
@@ -99,7 +99,7 @@ function animate_line(animate_selector) {
 		'charWidth' : 200,
 		'charsMap' : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ012345678',
 		'speed' : 3,
-		'speedVariation' : 2
+		'speedVariation' : 1
 	});
 	logo = null;
 	locationcode = $(animate_selector + ' .location');
@@ -107,7 +107,7 @@ function animate_line(animate_selector) {
 		'image' : 'css/images/chars.png',
 		'charsMap' : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ ',
 		'speed' : 3,
-		'speedVariation' : 2
+		'speedVariation' : 1
 	});
 	locationcode = null;
 }
