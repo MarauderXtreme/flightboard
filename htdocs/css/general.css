@@ -1,6 +1,6 @@
 html {
 	height: 100%;
-	background: linear-gradient(to bottom, #ECECD4 0px, #ECECD4 260px, #F9F9F1 480px, #F9F9F1 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);  /*#666666 #1F62A6;*/
+	background: linear-gradient(to bottom, #BED730 0%, #FFFFAA 100%) no-repeat scroll 0 0 rgba(0, 0, 0, 0);  /*#666666 #1F62A6;*/
 }
 body {
 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
