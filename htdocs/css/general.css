@@ -14,7 +14,7 @@ header {
 	height: 100px;
 }
 #content {
-	padding: 17px;
+	padding: 5px 40px;
 }
 
 /**
@@ -41,8 +41,14 @@ h1 a {
 .char {
 	margin: 3px;
 }
-span {
-	float: left;
+.flipline:after {
+	clear: both;
+}
+.logo {
 	margin-right: 25px;
-	margin-bottom: 15px;
+	margin-left: 25px;
+}
+span {
+	margin-bottom: 10px;
+	float: left;
 }

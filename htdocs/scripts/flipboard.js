@@ -76,8 +76,9 @@ var nid = [
 var flipperinterval;
 var linenumbers = 12;
 var offset = linenumbers;
-var lineflipintervall = 7;
-var completeflipintervall = 90;
+var charnumber = 37;
+var lineflipintervall = 9;
+var completeflipintervall = 150;
 
 function makemilliseconds(seconds) {
 	return seconds * 1000;
@@ -151,7 +152,7 @@ function get_array_entry(linenumber,type) {
 	switch(type) {
 		case 'title':
 			entry = nid[entrynumber][0];
-			entry = normalize_entries(entry,40);
+			entry = normalize_entries(entry,charnumber);
 			break;
 		case 'logo':
 			entry = nid[entrynumber][1];
