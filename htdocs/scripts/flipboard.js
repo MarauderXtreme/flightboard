@@ -20,7 +20,9 @@
  * The Function for the Flipper
  */
 
- function normalize_entries(entry,length) {
+Number.prototype.to_milliseconds = function () { return this * 1000; }
+
+function normalize_entries(entry,length) {
  	var entry_length = entry.length;
  	if(entry_length < length) {
  		diff = length - entry_length;
@@ -36,11 +38,8 @@
  	else {
  		return entry;
  	}
- }
-
-function makemilliseconds(seconds) {
-	return seconds * 1000;
 }
+
 
 function animate_line(animate_selector) {
 	$(animate_selector + ' .title').splitFlap({
@@ -76,27 +75,6 @@ function set_offset() {
 	else {
 		offset++;
 	};
-}
-
-function get_array_entry(linenumber,type) {
-	var entrynumber = offset - linenumber;
-	if(entrynumber < 0) {
-		entrynumber = nid.length + entrynumber;
-	}
-	switch(type) {
-		case 'title':
-			var entry = normalize_entries(nid[entrynumber][0],charnumber);
-			break;
-		case 'logo':
-			var entry = nid[entrynumber][1];
-			break;
-		case 'location':
-			var entry = normalize_entries(nid[entrynumber][2],4);
-			break;
-		default:
-			alert('This should not happen!!1!!11!einself');
-	}
-	return entry;
 }
 
 function construct_line(linenumber) {
@@ -139,8 +117,9 @@ function flipper(before) {
 	}
 }
 
-function everybodyDotheFlop() {
-	var counter = 0;
+function everybody_do_the_flop() {
+	flipper(0);
+	var counter = 1;
 	flipperintervall =
 		setInterval(function() {
 			flipper(counter);
@@ -150,10 +129,10 @@ function everybodyDotheFlop() {
    				clearInterval(flipperintervall);
 				var resetInterval = setInterval(function () {
 					clearInterval(resetInterval);
-					everybodyDotheFlop();
-				}, makemilliseconds(300 - linenumbers * lineflipintervall))
+					everybody_do_the_flop();
+				}, (300 - linenumbers * lineflipintervall).to_milliseconds())
   			}
-		}, makemilliseconds(lineflipintervall));
+		}, lineflipintervall.to_milliseconds());
 }
 
 function create_flipper_material() {
@@ -175,5 +154,5 @@ nid = nid.map(function (entry) {
  */
 $(document).ready(function() {
 	create_flipper_material();
-	everybodyDotheFlop();
+	everybody_do_the_flop();
 });
