@@ -1,31 +1,49 @@
 /**
  * @author Christoph Kepler
- * 
- * 
+ *
+ *
  * Slipt-Flap Config
  * .splitFlap({
  *	'image' : 'css/images/chars.png',
  * 	'charsMap' : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789.,!?#@()+-=',
- * 	'charWidth' : 50,	
+ * 	'charWidth' : 50,
  * 	'charHeight' : 100,
  * 	'padDir' : 'left',
  * 	'padChar' : ' ',
  * 	'speed' : 3,
  * 	'speedVariation' : 2
  * });
- * 
+ *
  */
 
 /**
  * The Function for the Flipper
  */
+
+ function normalize_entries(entry,length) {
+ 	var entry_length = entry.length;
+ 	if(entry_length < length) {
+ 		diff = length - entry_length;
+ 		for(i = 1;i <= diff; i++) {
+ 			entry = entry + ' ';
+ 		}
+ 		return entry;
+ 	}
+ 	else if(entry_length > length) {
+     	entry = entry.substring(0,length-1)+"@";
+ 		return entry;
+ 	}
+ 	else {
+ 		return entry;
+ 	}
+ }
+
 function makemilliseconds(seconds) {
-	return seconds * 1000;
+	return seconds * 100;
 }
 
 function animate_line(animate_selector) {
-	title = $(animate_selector + ' .title');
-	title.splitFlap({
+	$(animate_selector + ' .title').splitFlap({
 		'image' : 'css/images/chars.png',
 		'charWidth' : 40,
 		'charHeight' : 80,
@@ -33,9 +51,7 @@ function animate_line(animate_selector) {
 		'speed' : 5,
 		'speedVariation' : 1
 	});
-	title = null;
-	logo = $(animate_selector + ' .logo');
-	logo.splitFlap({
+	$(animate_selector + ' .logo').splitFlap({
 		'image' : 'css/images/logos.png',
 		'charWidth' : 160,
 		'charHeight' : 80,
@@ -43,9 +59,7 @@ function animate_line(animate_selector) {
 		'speed' : 3,
 		'speedVariation' : 1
 	});
-	logo = null;
-	locationcode = $(animate_selector + ' .location');
-	locationcode.splitFlap({
+	$(animate_selector + ' .location').splitFlap({
 		'image' : 'css/images/chars.png',
 		'charWidth' : 40,
 		'charHeight' : 80,
@@ -53,11 +67,10 @@ function animate_line(animate_selector) {
 		'speed' : 3,
 		'speedVariation' : 1
 	});
-	locationcode = null;
 }
 
 function set_offset() {
-	if (offset == get_array_size(nid)) {
+	if (offset == nid.length) {
 		offset = 1;
 	}
 	else {
@@ -65,45 +78,20 @@ function set_offset() {
 	};
 }
 
-function get_array_size(array) {
-	array_length = array.length;
-	return array_length;
-}
-
-function normalize_entries(entry,length) {
-	entry_length = entry.length;
-	if(entry_length < length) {
-		diff = length - entry_length;
-		for(i = 1;i <= diff; i++) {
-			entry = entry + ' ';
-		}
-		return entry;
-	}
-	else if(entry_length > length) {
-    entry = entry.substring(0,length-1)+"@";
-		return entry;
-	}
-	else {
-		return entry;
-	}
-}
-
 function get_array_entry(linenumber,type) {
-	entrynumber = offset - linenumber;
+	var entrynumber = offset - linenumber;
 	if(entrynumber < 0) {
-		entrynumber = get_array_size(nid) + entrynumber;
+		entrynumber = nid.length + entrynumber;
 	}
 	switch(type) {
 		case 'title':
-			entry = nid[entrynumber][0];
-			entry = normalize_entries(entry,charnumber);
+			var entry = normalize_entries(nid[entrynumber][0],charnumber);
 			break;
 		case 'logo':
-			entry = nid[entrynumber][1];
+			var entry = nid[entrynumber][1];
 			break;
 		case 'location':
-			entry = nid[entrynumber][2];
-			entry = normalize_entries(entry,4);
+			var entry = normalize_entries(nid[entrynumber][2],4);
 			break;
 		default:
 			alert('This should not happen!!1!!11!einself');
@@ -112,41 +100,37 @@ function get_array_entry(linenumber,type) {
 }
 
 function construct_line(linenumber) {
-	title = '<span class="title">' + get_array_entry(linenumber,'title') + '</span>';
-	logo = '<span class="logo">' + get_array_entry(linenumber,'logo') + '</span>';
-	locationcode = '<span class="location">' + get_array_entry(linenumber,'location') + '</span>';
-	line = '<div id="line-' + linenumber + '" class="flipline">' + title + logo + locationcode + '</div>'
+	var entry = nid[linenumber]
+	var title = '<span class="title">' + entry.title + '</span>';
+	var logo = '<span class="logo">' + entry.logo + '</span>';
+	var locationcode = '<span class="location">' + entry.location + '</span>';
+	var line = '<div id="line-' + linenumber + '" class="flipline">' + title + logo + locationcode + '</div>'
 	return line;
 }
 
 function first_line(linenumber) {
-	animate_selector = 0;
-	that = $('div#content>div:nth-of-type(' + linenumber + ')');
+	var animate_selector = 0;
+	var that = $('div#content>div:nth-of-type(' + linenumber + ')');
 	that.remove();
-	that = null;
 	that = $('div#content>div:nth-of-type(' + linenumber + ')');
 	that.before(construct_line(linenumber));
-	that =  null;
 	that = $('div#content>div:nth-of-type(' + linenumber + ')');
 	animate_selector = that.selector;
-	that = null;
 	animate_line(animate_selector);
 }
 
 function else_lines(linenumber,before) {
-	animate_selector = 0;
-	that = $('div#content>div:nth-of-type(' + linenumber + ')');
+	var animate_selector = 0;
+	var that = $('div#content>div:nth-of-type(' + linenumber + ')');
 	that.remove();
-	that = null;
 	$('div#content>div:nth-of-type(' + before + ')').after(construct_line(linenumber));
 	that = $('div#content>div:nth-of-type(' + linenumber + ')');
 	animate_selector = that.selector;
-	that = null;
 	animate_line(animate_selector);
 }
 
 function flipper(before) {
-	linenumber = before + 1;
+	var linenumber = before + 1;
 	if(linenumber == 1) {
 		first_line(linenumber);
 	}
@@ -163,32 +147,33 @@ function everybodyDotheFlop() {
 			counter++;
 			if(counter === linenumbers) {
 				set_offset();
-   			clearInterval(flipperintervall);
-  		}
+   				clearInterval(flipperintervall);
+				var resetInterval = setInterval(function () {
+					clearInterval(resetInterval);
+					everybodyDotheFlop();
+				}, makemilliseconds(300 - linenumbers * lineflipintervall))
+  			}
 		}, makemilliseconds(lineflipintervall));
 }
 
-function bypassintervall() {
-	everybodyDotheFlop();
-}
-
-function init() {
-	window.setInterval(function() {
-		everybodyDotheFlop();
-	}, makemilliseconds(completeflipintervall));
-}
-
 function create_flipper_material() {
-	content = $('#content').html();
+	var content = $('#content').html();
 	$('#content').html(content + '<div id="line-1" class="flipline"><!-- Init --></div>\n<div id="line-2" class="flipline"><!-- Init --></div>');
-	content = null;
 }
+
+
+nid = nid.map(function (entry) {
+   return {
+	   title: normalize_entries(entry[0], charnumber),
+	   logo: entry[1],
+	   location: normalize_entries(entry[2], 4)
+   }
+})
 
 /*
  * Main Function
  */
 $(document).ready(function() {
 	create_flipper_material();
-	bypassintervall();
-	init();
-})
+	everybodyDotheFlop();
+});
