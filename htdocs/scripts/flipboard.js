@@ -39,7 +39,7 @@
  }
 
 function makemilliseconds(seconds) {
-	return seconds * 100;
+	return seconds * 1000;
 }
 
 function animate_line(animate_selector) {
