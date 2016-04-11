@@ -5,6 +5,7 @@
 /**
  * Configuration of the flipper and intervall and shit. ^^
  */
+
 var nid = [
 	['INGENIEUR FUER VERFAHRENSTECHNIK','A','KOUR'],
 	['PRAKTIKANT TECHNICAL SALES','B','DUS'],
@@ -56,7 +57,7 @@ var nid = [
 	['PRAKT. RAUMFAHRT: MECHANISCHE EFFEKTE ','7','BACK'],
 	['LUFTVERKEHRSKAUFMANN|-FRAU BERUFSBEGL.','8','BER'],
 	['FORTBILDUNG AIRCRAFT MAINTEN. MECHANIC','8','BER'],
-]
+];
 
 var flipperinterval;
 var linenumbers = 11;
