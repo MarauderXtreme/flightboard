@@ -130,7 +130,7 @@ function everybody_do_the_flop() {
 				var resetInterval = setInterval(function () {
 					clearInterval(resetInterval);
 					everybody_do_the_flop();
-				}, (300 - linenumbers * lineflipintervall).to_milliseconds())
+				}, (completeflipintervall - linenumbers * lineflipintervall).to_milliseconds())
   			}
 		}, lineflipintervall.to_milliseconds());
 }

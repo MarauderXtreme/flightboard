@@ -63,5 +63,5 @@ var flipperinterval;
 var linenumbers = 11;
 var offset = linenumbers;
 var charnumber = 38;
-var lineflipintervall = 11;
-var completeflipintervall = 300;
+var lineflipintervall = 5;
+var completeflipintervall = 90;
