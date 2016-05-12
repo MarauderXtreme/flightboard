@@ -56,19 +56,20 @@ var nid = [
 	['PRAXISSTUDENT DESIGN FOR MANUFACTURING','7','BACK'],
 	['PRAKT. RAUMFAHRT: MECHANISCHE EFFEKTE ','7','BACK'],
 	['LUFTVERKEHRSKAUFMANN|-FRAU BERUFSBEGL.','8','BER'],
-	['FORTBILDUNG AIRCRAFT MAINTEN. MECHANIC','8','BER'],
+	['FORTBILDUNG AIRCRAFT MAINTEN. MECHANIC','8','BER']
 ];
 
 var debug = false;
-var flipperinterval;
 var linenumbers = 10;
 var offset = linenumbers;
 var charnumber = 39;
+var lineflipintervall;
+var completeflipintervall;
 if (debug) {
-	var lineflipintervall = 1;
-	var completeflipintervall = 30;
+	lineflipintervall = 1;
+	completeflipintervall = 30;
 }
 else {
-	var lineflipintervall = 5;
-	var completeflipintervall = 70;	
+	lineflipintervall = 5;
+	completeflipintervall = 70;	
 }

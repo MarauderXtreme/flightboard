@@ -21,7 +21,7 @@
  */
 Array.prototype.shuffle = function() {
 	var i = this.length, j, temp;
-	if ( i == 0 ) return this;
+	if ( i === 0 ) return this;
 	while ( --i ) {
 		j = Math.floor( Math.random() * ( i + 1 ) );
 		temp = this[i];
@@ -91,12 +91,12 @@ function animate_line(animate_selector) {
  * Setting the offset for continous iteration
  */
 function set_offset() {
-	if (offset == nid.length) {
+	if (offset === nid.length) {
 		offset = 1;
 	}
 	else {
 		offset++;
-	};
+	}
 }
 
 /**
@@ -143,7 +143,7 @@ function line_select(linenumber,first_line=false) {
  */
 function flipper(before) {
 	var linenumber = before + 1;
-	if(linenumber == 1) {
+	if(linenumber === 1) {
 		line_select(linenumber,true);
 	}
 	else {
