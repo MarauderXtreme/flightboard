@@ -112,7 +112,9 @@ function first_line(linenumber) {
 	that.before(construct_line(linenumber));
 	that = $('div#content>div:nth-of-type(' + linenumber + ')');
 	animate_selector = that.selector;
-	animate_line(animate_selector);
+	if(!debug){
+		animate_line(animate_selector);
+	}
 }
 
 function else_lines(linenumber,before) {
@@ -122,7 +124,9 @@ function else_lines(linenumber,before) {
 	$('div#content>div:nth-of-type(' + before + ')').after(construct_line(linenumber));
 	that = $('div#content>div:nth-of-type(' + linenumber + ')');
 	animate_selector = that.selector;
-	animate_line(animate_selector);
+	if(!debug){
+		animate_line(animate_selector);
+	}
 }
 
 function flipper(before) {

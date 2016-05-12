@@ -59,9 +59,16 @@ var nid = [
 	['FORTBILDUNG AIRCRAFT MAINTEN. MECHANIC','8','BER'],
 ];
 
+var debug = false;
 var flipperinterval;
 var linenumbers = 11;
 var offset = linenumbers;
 var charnumber = 38;
-var lineflipintervall = 5;
-var completeflipintervall = 500;
+if (debug) {
+	var lineflipintervall = 1;
+	var completeflipintervall = 30;
+}
+else {
+	var lineflipintervall = 5;
+	var completeflipintervall = 500;	
+}
