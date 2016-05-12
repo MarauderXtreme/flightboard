@@ -17,9 +17,8 @@
  */
 
 /**
- * The Function for the Flipper
+ * array shuffle method
  */
-
 Array.prototype.shuffle = function() {
 	var i = this.length, j, temp;
 	if ( i == 0 ) return this;
@@ -32,8 +31,14 @@ Array.prototype.shuffle = function() {
 	return this;
 }
 
+/**
+ * to_milliseconds method vor numbers
+ */
 Number.prototype.to_milliseconds = function () { return this * 1000; }
 
+/**
+ * This function trims or extends the given entry to the length
+ */
 function normalize_entries(entry,length) {
  	var entry_length = entry.length;
  	if(entry_length < length) {
@@ -52,7 +57,9 @@ function normalize_entries(entry,length) {
  	}
 }
 
-
+/**
+ * animation for every single line
+ */
 function animate_line(animate_selector) {
 	$(animate_selector + ' .title').splitFlap({
 		'image' : 'css/images/chars.png',
@@ -80,6 +87,9 @@ function animate_line(animate_selector) {
 	});
 }
 
+/**
+ * Setting the offset for continous iteration
+ */
 function set_offset() {
 	if (offset == nid.length) {
 		offset = 1;
@@ -89,6 +99,9 @@ function set_offset() {
 	};
 }
 
+/**
+ * Contruct the line with the linenumber and the array
+ */
 function construct_line(linenumber) {
 	var entrynumber = offset - linenumber;
 	
@@ -104,41 +117,43 @@ function construct_line(linenumber) {
 	return line;
 }
 
-function first_line(linenumber) {
-	var animate_selector = 0;
+/**
+ * Choose which line is to be animated
+ */
+function line_select(linenumber,first_line=false) {
 	var that = $('main#content>div:nth-of-type(' + linenumber + ')');
 	that.remove();
+	if(first_line) {
+		that = $('main#content>div:nth-of-type(' + linenumber + ')');
+		that.before(construct_line(linenumber));
+	}
+	else{
+		var before = linenumber - 1;
+		$('main#content>div:nth-of-type(' + before + ')').after(construct_line(linenumber));
+	}
 	that = $('main#content>div:nth-of-type(' + linenumber + ')');
-	that.before(construct_line(linenumber));
-	that = $('main#content>div:nth-of-type(' + linenumber + ')');
-	animate_selector = that.selector;
+	var animate_selector = that.selector;
 	if(!debug){
 		animate_line(animate_selector);
 	}
 }
 
-function else_lines(linenumber,before) {
-	var animate_selector = 0;
-	var that = $('main#content>div:nth-of-type(' + linenumber + ')');
-	that.remove();
-	$('main#content>div:nth-of-type(' + before + ')').after(construct_line(linenumber));
-	that = $('main#content>div:nth-of-type(' + linenumber + ')');
-	animate_selector = that.selector;
-	if(!debug){
-		animate_line(animate_selector);
-	}
-}
-
+/**
+ * Starts the flipper sub processes
+ */
 function flipper(before) {
 	var linenumber = before + 1;
 	if(linenumber == 1) {
-		first_line(linenumber);
+		line_select(linenumber,true);
 	}
 	else {
-		else_lines(linenumber,before);
+		line_select(linenumber);
 	}
 }
 
+/**
+ * All the intervals are set here
+ */
 function everybody_do_the_flop() {
 	flipper(0);
 	var counter = 1;
@@ -156,12 +171,16 @@ function everybody_do_the_flop() {
 	}, lineflipintervall.to_milliseconds());
 }
 
+/**
+ * Create initial Flipper lines
+ */
 function create_flipper_material() {
-	var content = $('#content').html();
-	$('#content').html(content + '<div id="line-1" class="flipline"><!-- Init --></div>\n<div id="line-2" class="flipline"><!-- Init --></div>');
+	$('#content').html('<div id="line-1" class="flipline"><!-- Init --></div>\n<div id="line-2" class="flipline"><!-- Init --></div>');
 }
 
-
+/**
+ * Maps the array entries to their names
+ */
 nid = nid.map(function (entry) {
    return {
 	   title: normalize_entries(entry[0], charnumber),
