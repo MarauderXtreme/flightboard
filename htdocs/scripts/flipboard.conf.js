@@ -64,4 +64,4 @@ var linenumbers = 11;
 var offset = linenumbers;
 var charnumber = 38;
 var lineflipintervall = 5;
-var completeflipintervall = 90;
+var completeflipintervall = 500;

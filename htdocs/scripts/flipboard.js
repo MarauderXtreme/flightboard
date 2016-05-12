@@ -78,7 +78,13 @@ function set_offset() {
 }
 
 function construct_line(linenumber) {
-	var entry = nid[linenumber]
+	var entrynumber = offset - linenumber;
+	
+	if(entrynumber < 0) {
+		entrynumber = nid.length + entrynumber;
+	}
+	
+	var entry = nid[entrynumber];
 	var title = '<span class="title">' + entry.title + '</span>';
 	var logo = '<span class="logo">' + entry.logo + '</span>';
 	var locationcode = '<span class="location">' + entry.location + '</span>';
@@ -120,19 +126,18 @@ function flipper(before) {
 function everybody_do_the_flop() {
 	flipper(0);
 	var counter = 1;
-	flipperintervall =
-		setInterval(function() {
-			flipper(counter);
-			counter++;
-			if(counter === linenumbers) {
-				set_offset();
-   				clearInterval(flipperintervall);
-				var resetInterval = setInterval(function () {
-					clearInterval(resetInterval);
-					everybody_do_the_flop();
-				}, (completeflipintervall - linenumbers * lineflipintervall).to_milliseconds())
-  			}
-		}, lineflipintervall.to_milliseconds());
+	flipperintervall = setInterval(function() {
+		flipper(counter);
+		counter++;
+		if(counter === linenumbers) {
+			set_offset();
+			clearInterval(flipperintervall);
+			var resetInterval = setInterval(function () {
+				clearInterval(resetInterval);
+				everybody_do_the_flop();
+			}, (completeflipintervall - linenumbers * lineflipintervall).to_milliseconds())
+		}
+	}, lineflipintervall.to_milliseconds());
 }
 
 function create_flipper_material() {
