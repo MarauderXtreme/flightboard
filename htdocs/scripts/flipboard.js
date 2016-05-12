@@ -19,7 +19,7 @@
 /**
  * The Function for the Flipper
  */
- 
+
 Array.prototype.shuffle = function() {
 	var i = this.length, j, temp;
 	if ( i == 0 ) return this;
@@ -66,7 +66,7 @@ function animate_line(animate_selector) {
 		'image' : 'css/images/logos.png',
 		'charWidth' : 160,
 		'charHeight' : 80,
-		'charsMap' : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ012345678',
+		'charsMap' : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,@():+- ',
 		'speed' : 3,
 		'speedVariation' : 1
 	});
@@ -106,11 +106,11 @@ function construct_line(linenumber) {
 
 function first_line(linenumber) {
 	var animate_selector = 0;
-	var that = $('div#content>div:nth-of-type(' + linenumber + ')');
+	var that = $('main#content>div:nth-of-type(' + linenumber + ')');
 	that.remove();
-	that = $('div#content>div:nth-of-type(' + linenumber + ')');
+	that = $('main#content>div:nth-of-type(' + linenumber + ')');
 	that.before(construct_line(linenumber));
-	that = $('div#content>div:nth-of-type(' + linenumber + ')');
+	that = $('main#content>div:nth-of-type(' + linenumber + ')');
 	animate_selector = that.selector;
 	if(!debug){
 		animate_line(animate_selector);
@@ -119,10 +119,10 @@ function first_line(linenumber) {
 
 function else_lines(linenumber,before) {
 	var animate_selector = 0;
-	var that = $('div#content>div:nth-of-type(' + linenumber + ')');
+	var that = $('main#content>div:nth-of-type(' + linenumber + ')');
 	that.remove();
-	$('div#content>div:nth-of-type(' + before + ')').after(construct_line(linenumber));
-	that = $('div#content>div:nth-of-type(' + linenumber + ')');
+	$('main#content>div:nth-of-type(' + before + ')').after(construct_line(linenumber));
+	that = $('main#content>div:nth-of-type(' + linenumber + ')');
 	animate_selector = that.selector;
 	if(!debug){
 		animate_line(animate_selector);
