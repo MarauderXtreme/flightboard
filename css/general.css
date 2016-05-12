@@ -33,6 +33,14 @@ h1 {
 	clear: both;
 
 }
+.title {
+	margin-left: 20px;
+
+}
+.location {
+	margin-right: 20px;
+
+}
 span {
 	margin-bottom: 5px;
 	float: left;
