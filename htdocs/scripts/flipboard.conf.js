@@ -61,9 +61,9 @@ var nid = [
 
 var debug = false;
 var flipperinterval;
-var linenumbers = 11;
+var linenumbers = 10;
 var offset = linenumbers;
-var charnumber = 38;
+var charnumber = 40;
 if (debug) {
 	var lineflipintervall = 1;
 	var completeflipintervall = 30;
