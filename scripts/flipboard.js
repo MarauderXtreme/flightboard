@@ -4,7 +4,7 @@
  *
  * Slipt-Flap Config
  * .splitFlap({
- *	'image' : 'css/images/chars.png',
+ *	'image' : 'images/split-flap/chars.png',
  * 	'charsMap' : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789.,!?#@()+-=',
  * 	'charWidth' : 50,
  * 	'charHeight' : 100,
@@ -62,7 +62,7 @@ function normalize_entries(entry,length) {
  */
 function animate_line(animate_selector) {
 	$(animate_selector + ' .title').splitFlap({
-		'image' : 'css/images/chars.png',
+		'image' : 'images/split-flap/chars.png',
 		'charWidth' : 40,
 		'charHeight' : 80,
 		'charsMap' : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789.,|@():+-',
@@ -70,7 +70,7 @@ function animate_line(animate_selector) {
 		'speedVariation' : 1
 	});
 	$(animate_selector + ' .logo').splitFlap({
-		'image' : 'css/images/logos.png',
+		'image' : 'images/split-flap/logos.png',
 		'charWidth' : 160,
 		'charHeight' : 80,
 		'charsMap' : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,@():+- ',
@@ -78,7 +78,7 @@ function animate_line(animate_selector) {
 		'speedVariation' : 1
 	});
 	$(animate_selector + ' .location').splitFlap({
-		'image' : 'css/images/chars.png',
+		'image' : 'images/split-flap/chars.png',
 		'charWidth' : 40,
 		'charHeight' : 80,
 		'charsMap' : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ ',
