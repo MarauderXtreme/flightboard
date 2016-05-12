@@ -63,12 +63,12 @@ var debug = false;
 var flipperinterval;
 var linenumbers = 10;
 var offset = linenumbers;
-var charnumber = 40;
+var charnumber = 39;
 if (debug) {
 	var lineflipintervall = 1;
 	var completeflipintervall = 30;
 }
 else {
 	var lineflipintervall = 5;
-	var completeflipintervall = 500;	
+	var completeflipintervall = 70;	
 }
