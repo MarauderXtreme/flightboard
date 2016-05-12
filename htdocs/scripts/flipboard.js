@@ -19,6 +19,18 @@
 /**
  * The Function for the Flipper
  */
+ 
+Array.prototype.shuffle = function() {
+	var i = this.length, j, temp;
+	if ( i == 0 ) return this;
+	while ( --i ) {
+		j = Math.floor( Math.random() * ( i + 1 ) );
+		temp = this[i];
+		this[i] = this[j];
+		this[j] = temp;
+	}
+	return this;
+}
 
 Number.prototype.to_milliseconds = function () { return this * 1000; }
 
@@ -158,6 +170,7 @@ nid = nid.map(function (entry) {
  * Main Function
  */
 $(document).ready(function() {
+	nid.shuffle();
 	create_flipper_material();
 	everybody_do_the_flop();
 });
