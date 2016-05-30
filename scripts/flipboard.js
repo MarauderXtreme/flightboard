@@ -5,13 +5,13 @@
  * Slipt-Flap Config
  * .splitFlap({
  *	'image' : 'images/split-flap/chars.png',
- * 	'charsMap' : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789.,!?#@()+-=',
- * 	'charWidth' : 50,
- * 	'charHeight' : 100,
- * 	'padDir' : 'left',
- * 	'padChar' : ' ',
- * 	'speed' : 3,
- * 	'speedVariation' : 2
+ *	'charsMap' : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789.,!?#@()+-=',
+ *	'charWidth' : 50,
+ *	'charHeight' : 100,
+ *	'padDir' : 'left',
+ *	'padChar' : ' ',
+ *	'speed' : 3,
+ *	'speedVariation' : 2
  * });
  *
  */
@@ -40,21 +40,21 @@ Number.prototype.to_milliseconds = function () { return this * 1000; }
  * This function trims or extends the given entry to the length
  */
 function normalize_entries(entry,length) {
- 	var entry_length = entry.length;
- 	if(entry_length < length) {
- 		diff = length - entry_length;
- 		for(i = 1;i <= diff; i++) {
- 			entry = entry + ' ';
- 		}
- 		return entry;
- 	}
- 	else if(entry_length > length) {
-     	entry = entry.substring(0,length-1)+"@";
- 		return entry;
- 	}
- 	else {
- 		return entry;
- 	}
+	var entry_length = entry.length;
+	if(entry_length < length) {
+		diff = length - entry_length;
+		for(i = 1;i <= diff; i++) {
+			entry = entry + ' ';
+		}
+		return entry;
+	}
+	else if(entry_length > length) {
+			entry = entry.substring(0,length-1)+"@";
+		return entry;
+	}
+	else {
+		return entry;
+	}
 }
 
 /**
@@ -104,11 +104,11 @@ function set_offset() {
  */
 function construct_line(linenumber) {
 	var entrynumber = offset - linenumber;
-	
+
 	if(entrynumber < 0) {
 		entrynumber = nid.length + entrynumber;
 	}
-	
+
 	var entry = nid[entrynumber];
 	var title = '<span class="title">' + entry.title + '</span>';
 	var logo = '<span class="logo">' + entry.logo + '</span>';
@@ -182,11 +182,11 @@ function create_flipper_material() {
  * Maps the array entries to their names
  */
 nid = nid.map(function (entry) {
-   return {
-	   title: normalize_entries(entry[0], charnumber),
-	   logo: entry[1],
-	   location: normalize_entries(entry[2], 4)
-   }
+	return {
+		title: normalize_entries(entry[0], charnumber),
+		logo: entry[1],
+		location: normalize_entries(entry[2], 4)
+	}
 })
 
 /*
