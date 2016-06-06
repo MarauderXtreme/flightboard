@@ -1,0 +1,17 @@
+{
+	"name": "flightboard",
+	"version": "0.1.0",
+	"description": "A flightboard-like App that shows a list of jobs, their company logo and a location code.",
+	"main": "main.js",
+	"scripts" : {
+		"start": "electron main.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/MarauderXtreme/flightboard.git"
+	},
+	"author": "MarauderXtreme",
+	"devDependencies": {
+		"electron-prebuilt": "^1.2.1"
+	}
+}
